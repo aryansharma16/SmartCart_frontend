@@ -20,7 +20,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/v/auth/register", {
+      const res = await axios.post(`${process.env.REACT_APP_API}/api/v/auth/register`, {
         name,
         email,
         password,
@@ -29,7 +29,6 @@ const Register = () => {
       });
       if (res && res.data.success) {
         toast.success(res.data.message);
-        // setShowSuccessToast(true);
         navigate("/login");
         console.log(res);
       } else {
@@ -37,9 +36,10 @@ const Register = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error("Somthing went Wrong 'catch'");
+      toast.error("Something went wrong ; catch");
     }
   };
+  
   return (
     <Layout>
       <div className="register_container">
