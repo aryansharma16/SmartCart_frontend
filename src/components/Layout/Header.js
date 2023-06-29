@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { GrWorkshop } from "react-icons/gr";
 import { useAuth } from "../../context/auth";
+
 const Header = () => {
   const [auth, setAuth] = useAuth();
   const handleLogout = () => {
@@ -10,11 +11,7 @@ const Header = () => {
       user: null,
       token: "",
     });
-    localStorage.removeItem('auth');
-
-
-
-    
+    localStorage.removeItem("auth");
   };
   return (
     <>
@@ -56,6 +53,11 @@ const Header = () => {
                   CustomStyle
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink to="/cart" className="nav-link">
+                  Cart(0)
+                </NavLink>
+              </li>
               {!auth.user ? (
                 <>
                   <li className="nav-item">
@@ -71,19 +73,23 @@ const Header = () => {
                 </>
               ) : (
                 <>
-                  <li className="nav-item">
-                    <NavLink to="/login" className="nav-link" onClick={handleLogout}>
-                      Logout
+                  <li className="nav-item" id="logout_style">
+                    <NavLink
+                      to="/login"
+                      className="nav-link"
+                      onClick={handleLogout}
+                    >
+                      <button class="button-82-pushable" role="button">
+                        <span class="button-82-shadow"></span>
+                        <span class="button-82-edge"></span>
+                        <span class="button-82-front text">Logout</span>
+                      </button>
                     </NavLink>
                   </li>
                 </>
               )}
 
-              <li className="nav-item">
-                <NavLink to="/cart" className="nav-link">
-                  Cart(0)
-                </NavLink>
-              </li>
+             
             </ul>
           </div>
         </div>

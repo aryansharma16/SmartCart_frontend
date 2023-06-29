@@ -31,7 +31,7 @@ const CustomCss = () => {
     <Layout title={"Home | SmartCart"}>
       <div className="home-page">
         <h1 className="home-page__title">Welcome to SmartCart</h1>
-        <h3 className="home-page__title">Write your custom CSS</h3>
+        <h3 className="home-page__title">Write your custom CSS: <b>Use .btn class name to change css of button </b></h3>
         <div className="custom-textarea-container">
           <textarea
             className="custom-textarea"
