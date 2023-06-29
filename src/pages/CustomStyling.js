@@ -8,7 +8,7 @@ const CustomStyling = () => {
 
   useEffect(() => {
     if (defaultCSS === 1) {
-      axios.get("/api/v/customcss/getcss") // Replace with the appropriate endpoint URL
+      axios.get( `${process.env.REACT_APP_API}/api/v/customcss/getcss` ) // Replace with the appropriate endpoint URL
         .then(response => {
           if (response.status === 200) {
             const data = response.data;
@@ -40,7 +40,7 @@ const CustomStyling = () => {
     styleElement.innerHTML = cssData;
     return styleElement;
   };
-  
+
 
   useEffect(() => {
     if (cssData) {

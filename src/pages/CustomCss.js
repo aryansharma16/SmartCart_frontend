@@ -11,13 +11,13 @@ const CustomCss = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/v/customcss/writecss", {
+      const res = await axios.post(`${process.env.REACT_APP_API}/api/v/customcss/writecss`, {
         cssplate,
       });
       if (res.data.success) {
         toast.success(res.data.message);
-        navigate("/login");
         console.log(res.data);
+        navigate("/login"); // Move this line inside the if block
       } else {
         toast.error(res.data.message);
       }
@@ -26,8 +26,7 @@ const CustomCss = () => {
       toast.error("Something went wrong");
     }
   };
-
-
+  
   return (
     <Layout title={"Home | SmartCart"}>
       <div className="home-page">
