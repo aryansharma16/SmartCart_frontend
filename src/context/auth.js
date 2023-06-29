@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext, createContext } from "react";
-import axios from "axios";
-import { set } from "mongoose";
+// import axios from "axios";
+// import { set } from "mongoose";
 
 const AuthContext = createContext();
 const AuthProvider = ({ children }) => {

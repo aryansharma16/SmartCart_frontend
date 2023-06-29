@@ -16,7 +16,7 @@ const CustomCss = () => {
       });
       if (res.data.success) {
         toast.success(res.data.message);
-        // navigate("/login");
+        navigate("/login");
         console.log(res.data);
       } else {
         toast.error(res.data.message);
@@ -26,6 +26,7 @@ const CustomCss = () => {
       toast.error("Something went wrong");
     }
   };
+
 
   return (
     <Layout title={"Home | SmartCart"}>

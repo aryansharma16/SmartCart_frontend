@@ -8,7 +8,7 @@ const About = () => {
     <Layout title={"About Us | SmartCart"}>
       <div className="about-container">
         <div className="about-image">
-        <img src={aboutus} alt="My Image" />
+        <img src={aboutus} alt="about" />
         </div>
         <div className="about-content">
           <h2 className="about-heading">About Us</h2>
