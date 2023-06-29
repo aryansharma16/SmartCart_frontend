@@ -40,6 +40,7 @@ const CustomStyling = () => {
     styleElement.innerHTML = cssData;
     return styleElement;
   };
+  
 
   useEffect(() => {
     if (cssData) {
