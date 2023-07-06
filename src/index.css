@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #d0e7e9;
+  background-color: #e9e7e8;
 
 }
 
@@ -676,4 +676,12 @@ hr {
 
 .button-82-pushable:focus:not(:focus-visible) {
   outline: none;
+}
+
+
+
+/* Dashboard css */
+
+.dashboard_container{
+  padding-top: 80px;
 }

@@ -95,14 +95,14 @@ const Register = () => {
             </div>
 
             <div className="button_flex">
-              <button type="submit" className="button-85">
-                Submit
-              </button>
+             
               <button onClick={(e) => navigate("/login")} class="button-57" role="button">
                 <span class="text">Already Registerd</span>
                 <span>Login</span>
               </button>
-              
+              <button type="submit" className="button-85">
+                Submit
+              </button>
             </div>
           </form>
         </div>

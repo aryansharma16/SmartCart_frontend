@@ -18,7 +18,8 @@ const AuthProvider = ({ children }) => {
         token: parseData.token,
       });
     }
-  }  ,[auth]);
+    // esint-disable-next-linesghst  // just add to comment o stop the keep renderong this effect
+  }  ,[]);
   //default axios
   return (
     <AuthContext.Provider value={[auth, setAuth]}>

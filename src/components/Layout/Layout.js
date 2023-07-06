@@ -35,7 +35,7 @@ Layout.defaultProps = {
   title: "SmartCart - shope",
   description: "Mern Stack Project",
   keywords: "mern,react,node,mongodb,express,seo,bootstrap",
-  auther: "Aryan",
+  auther: "Aryan Sharma",
 };
 
 export default Layout;

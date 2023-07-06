@@ -5,12 +5,13 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useAuth } from "../../context/auth";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,useLocation } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,7 +28,7 @@ const Login = () => {
           token: res.data.token,
         });
         localStorage.setItem('auth', JSON.stringify(res.data))
-        navigate("/");
+        navigate(location.state||"/");
         console.log(res);
       } else {
         toast.error(res.data.message);
@@ -61,11 +62,19 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              
             </div>
 
-            <button type="submit" className="button-85">
-              Submit
-            </button>
+           <div className="button_flex">
+             
+              <button onClick={(e) => navigate("/register")} class="button-57" role="button">
+                <span class="text">No account ?</span>
+                <span>Register</span>
+              </button>
+              <button type="submit" className="button-85">
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>
