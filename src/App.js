@@ -13,13 +13,17 @@ import Login from "./pages/Auth/Login";
 import CustomCss from "./pages/CustomCss";
 import CustomStyling from "./pages/CustomStyling";
 import PrivateRoute from "./components/Layout/Routes/Private";
+import ForgotPassword from "./pages/Auth/ForgotPassword";
+import Header from "./components/Layout/Header";
+import Footer from "./components/Layout/Footer";
 function App() {
   return (
-    <>
+    <><Header />
       <Routes>
+      
         <Route path="/" element={<HomePage />} />
-        <Route path="/dashboard" element={<PrivateRoute />}>
-          <Route path="" element={<Dashboard />} />
+        <Route exact path="/" element={<PrivateRoute />}>
+          <Route path="dashboard" element={<Dashboard />} />
         </Route>
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
@@ -29,7 +33,9 @@ function App() {
         <Route path="/*" element={<PageNotFound />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
       </Routes>
+      <Footer />
     </>
   );
 }

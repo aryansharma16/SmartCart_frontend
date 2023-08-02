@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #e9e7e8;
+  background-color: #000000;
 
 }
 
@@ -15,10 +15,12 @@ body {
 font-family: 'Poppins', sans-serif; */
 
 /*  home CSS  */
-
+main{
+  padding-top: 80px;
+}
 .home-page {
   padding: 40px;
-  padding-top: 100px;
+  /* padding-top: 100px; */
 }
 
 .home-page__title {
@@ -40,12 +42,12 @@ font-family: 'Poppins', sans-serif; */
   font-size: 20px;
   line-height: 26px;
   text-transform: uppercase;
-  box-shadow: 0px 8px 6px -6px gray;
-  --webkit-box-shadow: 0px 8px 6px -6px gray;
-  border-bottom: solid grey !important;
+  /* box-shadow: 0px 8px 6px -6px gray;
+  --webkit-box-shadow: 0px 8px 6px -6px gray; */
+  border-bottom: 1px solid rgb(50, 50, 50) !important;
   position: fixed;
   width: 100%;
-  background: radial-gradient(circle at 10% 20%, rgb(87, 108, 117) 0%, rgb(79, 137, 162) 0%, rgb(11, 11, 11) 100.2%);
+  background: #000 !important;
 }
 
 .navbar-brand {
@@ -57,28 +59,29 @@ font-family: 'Poppins', sans-serif; */
 
 .nav-link {
   font-weight: 300 !important;
-  color: white;
+  color: #888;
 }
 .nav-link:hover {
   font-weight: 300 !important;
-  color: rgb(2, 85, 239);
+  color: white;
 }
 
 /*  hard code for navbar for its coor and appearance
  */
 .active {
-  border-bottom: 2px solid rgb(0, 94, 255);
+  /* border-bottom: 2px solid rgb(255, 255, 255); */
 color: white;
 }
 .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
-  color: rgb(0, 92, 252);
+  color: #0070f3;
 }
 /* Footer */
 
 .Footer {
   color: white;
   padding: 24px;
-  background: radial-gradient(circle at -8.9% 51.2%, rgb(167, 187, 218) 0%, rgb(129, 181, 248) 15.9%, rgb(91, 160, 238) 15.9%, rgb(178, 219, 226) 24.4%, rgb(19, 30, 37) 24.5%, rgb(19, 30, 37) 66%);
+  background: #000;
+  border-top: 1px solid rgb(46, 46, 46);
   position: static;
 }
 
@@ -373,7 +376,7 @@ hr {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 139px;
+  /* padding-top: 139px; */
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -683,5 +686,45 @@ hr {
 /* Dashboard css */
 
 .dashboard_container{
-  padding-top: 80px;
+  /* padding-top: 80px; */
+}
+
+/* Custom Dropdown */
+.custom-dropdown {
+  position: relative;
+}
+
+.custom-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: none;
+  z-index: 999;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 0;
+  min-width: 150px;
+}
+
+.custom-dropdown-menu.show {
+  display: block;
+}
+
+.custom-dropdown-item {
+  padding: 8px 16px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.custom-dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

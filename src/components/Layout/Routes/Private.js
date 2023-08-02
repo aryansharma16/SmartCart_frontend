@@ -1,38 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { useAuth } from "../../../context/auth";
-import { Outlet } from "react-router-dom";
-import axios from "axios";
-import Spinner from "../../Spinner";
+import React, { useEffect, useState } from "react";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
+// import Spinner from "./Spinner";/
+import Spinner from "../Spinner.js/Spinner";
 
 export default function PrivateRoute() {
-  const [ok, setOk] = useState(false);
-  const [auth, setAuth] = useAuth();
+  const token = localStorage.getItem("token");
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true); // State for showing the spinner
 
   useEffect(() => {
-    const authCheck = async () => {
-      try {
-        const res = await axios.get(
-          `${process.env.REACT_APP_API}/api/v/auth/user-auth`,
-          {
-            headers: {
-              Authorization: auth?.token,
-            },
-          }
-        );
-        if (res.data.ok) {
-          setOk(true);
-        } else {
-          setOk(false);
-        }
-      } catch (error) {
-        console.log(error);
-        setOk(false);
-      }
+    // Simulate loading for 3 seconds
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => {
+      clearTimeout(loadingTimeout);
     };
+  }, []);
 
-    authCheck(); // Call the authCheck function
+  useEffect(() => {
+    if (!isLoading && !token) {
+      navigate("/login");
+    }
+  }, [navigate, isLoading, token]);
 
-  }, [auth?.token]);
-
-  return ok ? <Outlet /> : <Spinner />;
+  return isLoading  ? <Spinner /> : token ? <Outlet /> : <Navigate to="/login" />;
 }

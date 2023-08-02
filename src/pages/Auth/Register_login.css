@@ -4,11 +4,11 @@
 /* register css */
 
 .register_container {
-    padding-top: 100px;
+    /* padding-top: 100px; */
     display: flex;
     align-items: center;
     justify-content: center;
-    /* padding-bottom: 100px; */
+    padding-bottom: 50px;
   }
   
   .register_wrapper {
@@ -20,6 +20,12 @@
     color: rgb(255, 255, 255) !important;
     width: 350px;
     box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    border: 1px solid #3a3a3a;
+
+  }
+  .register_wrapper:hover{
+    border: 1px solid #575757;
+
   }
 
 .form-text11{
@@ -28,7 +34,7 @@
 .register_heading{
     font-size: 25px;
     font-family: 'Times New Roman', Times, serif;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 input[type="email"]::placeholder {
     color: rgb(0, 132, 255);
@@ -195,4 +201,13 @@ input[type="text"]::placeholder {
 
 
   transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
+}
+
+/* forgot password page*/
+ 
+.register_heading22{
+    font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
+    padding-bottom: 12px;
+    opacity: 60%;
 }

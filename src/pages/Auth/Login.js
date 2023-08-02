@@ -3,13 +3,16 @@ import Layout from "../../components/Layout/Layout";
 import "./Register_login.css";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useAuth } from "../../context/auth";
+// import { useAuth } from "../../context/auth";
 
 import { useNavigate ,useLocation } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [auth, setAuth] = useAuth();
+  // const [auth, setAuth] = useAuth();
+  const [auth, setAuth] = useState();
+ 
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -22,28 +25,25 @@ const Login = () => {
       });
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
-        setAuth({
-          ...auth,
-          user: res.data.user,
-          token: res.data.token,
-        });
-        localStorage.setItem('auth', JSON.stringify(res.data))
-        navigate(location.state||"/");
-        console.log(res);
+
+        // Save authentication information to local storage
+        localStorage.setItem('token', JSON.stringify(res.data.token));
+
+        navigate('/dashboard');
       } else {
         toast.error(res.data.message);
       }
     } catch (error) {
       console.log(error);
-      toast.error("Somthing went Wrong 'catch'");
+      toast.error("Something went wrong in the 'catch' block");
     }
   };
   return (
-    <Layout>
+    <Layout title={"Login | Shope"}>
       <div className="register_container">
         <div className="register_wrapper">
           <h2 className="register_heading">Login Here</h2>
-          <form onSubmit={handleSubmit}>
+          <form >
             <div className="mb-3">
               <input
                 type="email"
@@ -67,11 +67,11 @@ const Login = () => {
 
            <div className="button_flex">
              
-              <button onClick={(e) => navigate("/register")} class="button-57" role="button">
-                <span class="text">No account ?</span>
-                <span>Register</span>
+              <button onClick={(e) => navigate("/forgotpassword")} className="button-57"  > 
+                <span class="text">Forgot Passord</span>
+                <span>Change!</span>
               </button>
-              <button type="submit" className="button-85">
+              <button className="button-85" onClick={handleSubmit}>
                 Submit
               </button>
             </div>

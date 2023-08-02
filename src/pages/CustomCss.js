@@ -17,7 +17,7 @@ const CustomCss = () => {
       if (res.data.success) {
         toast.success(res.data.message);
         console.log(res.data);
-        navigate("/login"); // Move this line inside the if block
+        navigate("/customstyle"); // Move this line inside the if block
       } else {
         toast.error(res.data.message);
       }

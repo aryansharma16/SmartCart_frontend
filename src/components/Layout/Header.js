@@ -1,18 +1,29 @@
-import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { GrWorkshop } from "react-icons/gr";
 import { useAuth } from "../../context/auth";
 
 const Header = () => {
-  const [auth, setAuth] = useAuth();
-  const handleLogout = () => {
+  // const [auth, setAuth] = useAuth();
+  const [auth, setAuth] = useState({});
+  const navigate = useNavigate(); 
+      const handleLogout = (e) => {
+    e.preventDefault();
+
     setAuth({
       ...auth,
-      user: null,
+
       token: "",
     });
-    localStorage.removeItem("auth");
+    localStorage.removeItem("token");
+navigate("/login")
   };
+  useEffect(()=>{
+    console.log(" ksdcisc ijev   hdhh")
+    if(!auth.token){
+      setAuth({token:localStorage.getItem("token")})
+    }
+  },[auth.token])
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary ">
@@ -58,7 +69,8 @@ const Header = () => {
                   Cart(0)
                 </NavLink>
               </li>
-              {!auth.user ? (
+              {/* {auth.token } */}
+              {!auth.token ? (
                 <>
                   <li className="nav-item">
                     <NavLink to="/register" className="nav-link">
