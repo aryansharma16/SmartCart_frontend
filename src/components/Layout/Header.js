@@ -12,7 +12,7 @@ const Header = ({auth ,setAuth}) => {
     setAuth({
       ...auth,
 
-      token: "",
+      ["token"]: "",
     });
     localStorage.removeItem("token");
 navigate("/login")

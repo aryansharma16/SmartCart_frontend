@@ -16,9 +16,17 @@ import PrivateRoute from "./components/Layout/Routes/Private";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 function App() {
   const [auth, setAuth] = useState({});
+
+  useEffect(() => {
+    setAuth({
+      ...auth,
+
+      ["token"]: localStorage.getItem("token"),
+    });
+  }, []);
   return (
     <>
       <Header auth={auth} setAuth={setAuth} />

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout/Layout";
 
 const HomePage = () => {
-  // const [auth, setAuth] = useState(JSON.parse(localStorage.getItem("token")) || {});
+  const [auth, setAuth] = useState(JSON.parse(localStorage.getItem("token")) || {});
 
   // useEffect(() => {
   //   // Save authentication information to local storage whenever it changes
@@ -15,7 +15,7 @@ const HomePage = () => {
         <h1 className="home-page__title">Welcome to SmartCart</h1>
         <p className="home-page__description">
           Start shopping smarter with SmartCart, the ultimate online shopping platform.
-          {/* <pre>{JSON.stringify(auth.token , null, 4)}</pre> */}
+          <pre>{JSON.stringify(auth.token , null, 4)}</pre>
         </p>
       </div>
     </Layout>
