@@ -6,11 +6,11 @@ import toast from "react-hot-toast";
 // import { useAuth } from "../../context/auth";
 
 import { useNavigate ,useLocation } from "react-router-dom";
-const Login = () => {
+const Login = ({auth, setAuth} ) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   // const [auth, setAuth] = useAuth();
-  const [auth, setAuth] = useState();
+  // const [auth, setAuth] = useState();
  
 
   const navigate = useNavigate();
@@ -25,10 +25,14 @@ const Login = () => {
       });
       if (res && res.data.success) {
         toast.success(res.data && res.data.message);
-
+        setAuth({
+          ...auth,
+    
+          ["token"]: res.data.token,
+        });
         // Save authentication information to local storage
+        // setAuth(res.data.token)
         localStorage.setItem('token', JSON.stringify(res.data.token));
-
         navigate('/dashboard');
       } else {
         toast.error(res.data.message);

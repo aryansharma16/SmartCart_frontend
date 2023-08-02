@@ -3,9 +3,8 @@ import { NavLink, Link, useNavigate } from "react-router-dom";
 import { GrWorkshop } from "react-icons/gr";
 import { useAuth } from "../../context/auth";
 
-const Header = () => {
+const Header = ({auth ,setAuth}) => {
   // const [auth, setAuth] = useAuth();
-  const [auth, setAuth] = useState({});
   const navigate = useNavigate(); 
       const handleLogout = (e) => {
     e.preventDefault();
@@ -18,12 +17,6 @@ const Header = () => {
     localStorage.removeItem("token");
 navigate("/login")
   };
-  useEffect(()=>{
-    console.log(" ksdcisc ijev   hdhh")
-    if(!auth.token){
-      setAuth({token:localStorage.getItem("token")})
-    }
-  },[auth.token])
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary ">
@@ -70,7 +63,7 @@ navigate("/login")
                 </NavLink>
               </li>
               {/* {auth.token } */}
-              {!auth.token ? (
+              {!auth?.token ? (
                 <>
                   <li className="nav-item">
                     <NavLink to="/register" className="nav-link">

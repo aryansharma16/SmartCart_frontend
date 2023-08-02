@@ -16,11 +16,13 @@ import PrivateRoute from "./components/Layout/Routes/Private";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
+import { useState } from "react";
 function App() {
+  const [auth, setAuth] = useState({});
   return (
-    <><Header />
+    <>
+      <Header auth={auth} setAuth={setAuth} />
       <Routes>
-      
         <Route path="/" element={<HomePage />} />
         <Route exact path="/" element={<PrivateRoute />}>
           <Route path="dashboard" element={<Dashboard />} />
@@ -32,7 +34,10 @@ function App() {
         <Route path="/customstyle" element={<CustomStyling />} />
         <Route path="/*" element={<PageNotFound />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={<Login token={auth} setAuth={setAuth} />}
+        />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
       </Routes>
       <Footer />

@@ -6,7 +6,7 @@ const Dashboard = () => {
   
   return (
   <>
-  <Header />
+  {/* <Header /> */}
 
     <Layout title={'Dashboard - Ecom'}>
 
