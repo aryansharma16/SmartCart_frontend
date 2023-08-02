@@ -17,6 +17,7 @@ font-family: 'Poppins', sans-serif; */
 /*  home CSS  */
 main{
   padding-top: 80px;
+  color: rgb(173, 173, 173);
 }
 .home-page {
   padding: 40px;
