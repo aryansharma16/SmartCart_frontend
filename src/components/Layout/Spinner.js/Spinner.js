@@ -24,7 +24,7 @@ const location = useLocation();
           role="status"
           aria-hidden="true"
         ></span>
-  &nbsp; &nbsp; Redirecting to you in {count - 1} seconds....{" "}
+  &nbsp; &nbsp; Redirecting to Dashboard in {count - 1} seconds....{" "}
       </button>
     </div>
   );

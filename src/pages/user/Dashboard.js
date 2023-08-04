@@ -14,6 +14,7 @@ const Dashboard = () => {
     {console.log("Hey from this")}
     <div className='dashboard_container'></div>
       <h>Dashboard page</h>
+      
     </>
     </Layout>
   </>

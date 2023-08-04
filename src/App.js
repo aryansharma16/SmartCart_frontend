@@ -18,14 +18,18 @@ import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import { useEffect, useState } from "react";
 function App() {
-  const [auth, setAuth] = useState({});
+  const [auth, setAuth] = useState({
+    token: localStorage.getItem("token"),
+  });
 
   useEffect(() => {
-    setAuth({
-      ...auth,
-
-      ["token"]: localStorage.getItem("token"),
-    });
+    const tokenExpiration = localStorage.getItem("tokenExpiration");
+    if (tokenExpiration && new Date().getTime() > tokenExpiration) {
+      // Token has expired, so log out the user
+      setAuth({});
+      localStorage.removeItem("token");
+      localStorage.removeItem("tokenExpiration");
+    }
   }, []);
   return (
     <>

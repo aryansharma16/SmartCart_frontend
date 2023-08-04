@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair:wght@700&family=Poppins:wght@300;400&display=swap');
 
+
 * {
   margin: 0;
   padding: 0;
@@ -15,10 +16,11 @@ body {
 font-family: 'Poppins', sans-serif; */
 
 /*  home CSS  */
-main{
+main {
   padding-top: 80px;
   color: rgb(173, 173, 173);
 }
+
 .home-page {
   padding: 40px;
   /* padding-top: 100px; */
@@ -62,20 +64,39 @@ main{
   font-weight: 300 !important;
   color: #888;
 }
+
 .nav-link:hover {
   font-weight: 300 !important;
   color: white;
 }
 
+/* Custom CSS */
+/* Custom CSS hamburger*/
+.white-toggler-icon {
+  /* Your existing CSS for the hamburger icon */
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  transition: background-color 0.3s ease;
+}
+
+.white-toggler-icon.cross {
+  /* New CSS for the cross icon */
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 4L26 26M4 26l22-22'/%3E%3C/svg%3E");
+}
+
+
+
 /*  hard code for navbar for its coor and appearance
  */
 .active {
   /* border-bottom: 2px solid rgb(255, 255, 255); */
-color: white;
+  color: white;
 }
-.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link.show {
   color: #0070f3;
 }
+
 /* Footer */
 
 .Footer {
@@ -144,7 +165,8 @@ textarea {
   color: #f8f2f2;
   letter-spacing: 1px;
 }
-.custom-textarea{
+
+.custom-textarea {
   width: 900px !important;
   background-color: #302d2d;
   color: #001aff;
@@ -152,6 +174,7 @@ textarea {
   height: 300px;
   font-size: 30px;
 }
+
 .send-button {
   margin-top: 15px;
   height: 34px;
@@ -517,16 +540,17 @@ hr {
 /* extra button classes */
 
 .button-89 {
-  --b: 3px;   /* border thickness */
-  --s: .45em; /* size of the corner */
+  --b: 3px;
+  /* border thickness */
+  --s: .45em;
+  /* size of the corner */
   --color: #373B44;
-  
+
   padding: calc(.5em + var(--s)) calc(.9em + var(--s));
   color: var(--color);
   --_p: var(--s);
   background:
-    conic-gradient(from 90deg at var(--b) var(--b),#fc000000 90deg,var(--color) 0)
-    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    conic-gradient(from 90deg at var(--b) var(--b), #fc000000 90deg, var(--color) 0) var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
   transition: .3s linear, color 0s, background-color 0s;
   outline: var(--b) solid #ee050500;
   outline-offset: .6em;
@@ -540,7 +564,7 @@ hr {
 }
 
 .button-89:hover,
-.button-89:focus-visible{
+.button-89:focus-visible {
   --_p: 0px;
   outline-color: var(--color);
   outline-offset: .05em;
@@ -562,7 +586,7 @@ hr {
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  margin-left:20px ;
+  margin-left: 20px;
 }
 
 .btn:hover {
@@ -574,9 +598,8 @@ hr {
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.3);
 }
-#logout_style{
 
-}
+#logout_style {}
 
 
 .button-82-pushable {
@@ -603,9 +626,7 @@ hr {
   will-change: transform;
   transform: translateY(2px);
   transition:
-    transform
-    600ms
-    cubic-bezier(.3, .7, .4, 1);
+    transform 600ms cubic-bezier(.3, .7, .4, 1);
 }
 
 .button-82-edge {
@@ -615,13 +636,11 @@ hr {
   width: 100%;
   height: 100%;
   border-radius: 12px;
-  background: linear-gradient(
-    to left,
-    hsl(340deg 100% 16%) 0%,
-    hsl(340deg 100% 32%) 8%,
-    hsl(340deg 100% 32%) 92%,
-    hsl(340deg 100% 16%) 100%
-  );
+  background: linear-gradient(to left,
+      hsl(340deg 100% 16%) 0%,
+      hsl(340deg 100% 32%) 8%,
+      hsl(340deg 100% 32%) 92%,
+      hsl(340deg 100% 16%) 100%);
 }
 
 .button-82-front {
@@ -635,9 +654,7 @@ hr {
   will-change: transform;
   transform: translateY(-4px);
   transition:
-    transform
-    600ms
-    cubic-bezier(.3, .7, .4, 1);
+    transform 600ms cubic-bezier(.3, .7, .4, 1);
 }
 
 @media (min-width: 768px) {
@@ -655,9 +672,7 @@ hr {
 .button-82-pushable:hover .button-82-front {
   transform: translateY(-6px);
   transition:
-    transform
-    250ms
-    cubic-bezier(.3, .7, .4, 1.5);
+    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
 }
 
 .button-82-pushable:active .button-82-front {
@@ -668,9 +683,7 @@ hr {
 .button-82-pushable:hover .button-82-shadow {
   transform: translateY(4px);
   transition:
-    transform
-    250ms
-    cubic-bezier(.3, .7, .4, 1.5);
+    transform 250ms cubic-bezier(.3, .7, .4, 1.5);
 }
 
 .button-82-pushable:active .button-82-shadow {
@@ -686,7 +699,7 @@ hr {
 
 /* Dashboard css */
 
-.dashboard_container{
+.dashboard_container {
   /* padding-top: 80px; */
 }
 
@@ -723,9 +736,95 @@ hr {
 .custom-dropdown-item:hover {
   background-color: #f1f1f1;
 }
+
 .spinner-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+}
+
+.color-white-fade {
+  color: white !important;
+}
+
+
+/*  drop down css */
+
+/* Custom Dropdown Styles */
+.custom-dropdow {
+  color: white;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.btnMore {}
+
+.dropdown-menu {
+  position: absolute;
+  margin-right: 100px;
+  top: 100%;
+  left: 0;
+  right: 50%;
+  z-index: 1;
+  display: none;
+  background-color: #000000;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 5px;
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  color: white;
+}
+
+
+/* CSS */
+.button-28 {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: #7a7a7a;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  min-width: 0;
+  outline: none;
+  padding: 6px 14px;
+
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+}
+
+.button-28:disabled {
+  pointer-events: none;
+}
+
+.button-28:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+.button-28:active {
+  box-shadow: none;
+  transform: translateY(0);
 }

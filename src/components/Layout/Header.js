@@ -1,28 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { GrWorkshop } from "react-icons/gr";
-import { useAuth } from "../../context/auth";
 
-const Header = ({auth ,setAuth}) => {
-  // const [auth, setAuth] = useAuth();
-  const navigate = useNavigate(); 
-      const handleLogout = (e) => {
+const Header = ({ auth, setAuth }) => {
+  const navigate = useNavigate();
+  const handleLogout = (e) => {
     e.preventDefault();
 
     setAuth({
       ...auth,
-
-      ["token"]: "",
+      token: "", // Corrected: Removed square brackets around "token"
     });
     localStorage.removeItem("token");
-navigate("/login")
+    navigate("/login");
   };
+
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary ">
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
-            SmartCart <GrWorkshop to="/" />
+            SmartCart <GrWorkshop />{" "}
+            {/* Corrected: Removed unnecessary "to" prop */}
           </Link>
           <button
             className="navbar-toggler"
@@ -33,8 +32,9 @@ navigate("/login")
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon white-toggler-icon"></span>
           </button>
+
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
               <li className="nav-item">
@@ -62,7 +62,8 @@ navigate("/login")
                   Cart(0)
                 </NavLink>
               </li>
-              {/* {auth.token } */}
+
+              {/* Render different links based on whether the user is logged in */}
               {!auth?.token ? (
                 <>
                   <li className="nav-item">
@@ -78,23 +79,57 @@ navigate("/login")
                 </>
               ) : (
                 <>
-                  <li className="nav-item" id="logout_style">
-                    <NavLink
-                      to="/login"
-                      className="nav-link"
-                      onClick={handleLogout}
+                  <div className="dropdown">
+                    <button
+                      className="btnMore btn-secondary dropdown-toggle  button-28"
+                      type="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
                     >
-                      <button class="button-82-pushable" role="button">
-                        <span class="button-82-shadow"></span>
-                        <span class="button-82-edge"></span>
-                        <span class="button-82-front text">Logout</span>
-                      </button>
-                    </NavLink>
-                  </li>
+                      Explore More &#9755;
+                    </button>
+                    <ul
+                      className="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                    >
+                      <li>
+                        <NavLink to="/dashboard" className="dropdown-item">
+                          Dashboard
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/about" className="dropdown-item">
+                          About
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/contact" className="dropdown-item">
+                          Contact
+                        </NavLink>
+                      </li>
+                      <li>
+                        <NavLink to="/policy" className="dropdown-item">
+                          Privacy Policy
+                        </NavLink>
+                      </li>
+                      <li id="logout_style">
+                        {/* Logout button */}
+                        <NavLink
+                          to="/login"
+                          className="nav-link"
+                          onClick={handleLogout}
+                        >
+                          <button className="button-82-pushable" role="button">
+                            <span className="button-82-shadow"></span>
+                            <span className="button-82-edge"></span>
+                            <span className="button-82-front text">Logout</span>
+                          </button>
+                        </NavLink>
+                      </li>
+                    </ul>
+                  </div>
                 </>
               )}
-
-             
             </ul>
           </div>
         </div>
