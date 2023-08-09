@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 import { GrWorkshop } from "react-icons/gr";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faUserSlash } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
 const Header = ({ auth, setAuth }) => {
   const navigate = useNavigate();
+  
   const handleLogout = (e) => {
     e.preventDefault();
 
@@ -12,8 +17,11 @@ const Header = ({ auth, setAuth }) => {
       token: "", // Corrected: Removed square brackets around "token"
     });
     localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem("role");
     navigate("/login");
   };
+  const role = localStorage.getItem("role");
 
   return (
     <>
@@ -59,7 +67,11 @@ const Header = ({ auth, setAuth }) => {
               </li>
               <li className="nav-item">
                 <NavLink to="/cart" className="nav-link">
-                  Cart(0)
+                  <FontAwesomeIcon
+                    icon={faCartShopping}
+                    style={{ fontSize: "16px", color: "#4E4FEB" }}
+                  />
+                  &#160;(0)
                 </NavLink>
               </li>
 
@@ -81,22 +93,39 @@ const Header = ({ auth, setAuth }) => {
                 <>
                   <div className="dropdown">
                     <button
-                      className="btnMore btn-secondary dropdown-toggle  button-28"
+                      className="btnMore btn-secondary dropdown-toggle button-28"
                       type="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
                     >
-                      Explore More &#9755;
+                      <span className="icon" style={{ color: "green" }}>
+                        <FontAwesomeIcon icon={faUser} />
+                        &nbsp;
+                      </span>
+                      {localStorage.getItem("name")}
                     </button>
                     <ul
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
                       <li>
-                        <NavLink to="/dashboard" className="dropdown-item">
-                          Dashboard
-                        </NavLink>
+                        {role === "1" ? (
+                          <NavLink
+                            to="/dashboard/admin"
+                            className="dropdown-item"
+                          >
+                            Dashboard
+                          </NavLink>
+                        ) : (
+                          <NavLink
+                            to="/user/dashboard"
+                            className="dropdown-item"
+                          >
+                            Dashboard
+                          </NavLink>
+                        )}
                       </li>
+
                       <li>
                         <NavLink to="/about" className="dropdown-item">
                           About
@@ -122,7 +151,13 @@ const Header = ({ auth, setAuth }) => {
                           <button className="button-82-pushable" role="button">
                             <span className="button-82-shadow"></span>
                             <span className="button-82-edge"></span>
-                            <span className="button-82-front text">Logout</span>
+                            <span className="button-82-front text">
+                              <FontAwesomeIcon
+                                icon={faUserSlash}
+                                style={{ fontSize: "16px", color: "purple" }}
+                              />
+                              &nbsp; Logout
+                            </span>
                           </button>
                         </NavLink>
                       </li>

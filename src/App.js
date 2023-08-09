@@ -16,7 +16,10 @@ import PrivateRoute from "./components/Layout/Routes/Private";
 import ForgotPassword from "./pages/Auth/ForgotPassword";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
+import AdminRoute from "./components/Layout/Routes/AdminRoute";
 import { useEffect, useState } from "react";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import SampleUserComp from "./pages/user/SampleUserComp";
 function App() {
   const [auth, setAuth] = useState({
     token: localStorage.getItem("token"),
@@ -36,8 +39,14 @@ function App() {
       <Header auth={auth} setAuth={setAuth} />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route exact path="/" element={<PrivateRoute />}>
+
+        <Route exact path="/user" element={<PrivateRoute />}>
           <Route path="dashboard" element={<Dashboard />} />
+          <Route path="samp" element={<SampleUserComp />} />
+        </Route>
+
+        <Route path="/dashboard/" element={<AdminRoute />}>
+          <Route path="admin" element={<AdminDashboard />} />
         </Route>
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />

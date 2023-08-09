@@ -1,9 +1,19 @@
 import React from 'react'
 import Layout from '../../components/Layout/Layout'
 import Header from '../../components/Layout/Header'
+import { useNavigate } from 'react-router-dom'
 
 const Dashboard = () => {
-  
+  console.log("kkmdmckmd")
+  let navigate = useNavigate()
+  const handleClick = async (e) => {
+      e.preventDefault();
+     try {
+      navigate('/user/samp')
+     } catch (error) {
+      console.log(error)
+     }
+    };
   return (
   <>
   {/* <Header /> */}
@@ -15,6 +25,7 @@ const Dashboard = () => {
     <div className='dashboard_container'></div>
       <h>Dashboard page</h>
       
+      <button onClick={handleClick}> Ckick Here Route next</button>
     </>
     </Layout>
   </>

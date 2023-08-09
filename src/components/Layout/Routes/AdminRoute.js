@@ -3,11 +3,12 @@ import { Navigate, Outlet, useNavigate } from "react-router-dom";
 // import Spinner from "./Spinner";/
 import Spinner from "../Spinner.js/Spinner";
 
-export default function PrivateRoute() {
+export default function AdminRoute() {
   const token = localStorage.getItem("token");
+  const role= localStorage.getItem('role');
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true); // State for showing the spinner
-  const [role,setRole] = localStorage.getItem('role');
 
   useEffect(() => {
     // Simulate loading for 3 seconds
@@ -21,10 +22,11 @@ export default function PrivateRoute() {
   }, []);
 
   useEffect(() => {
-    if ((!isLoading && !token )|| role !=="0") {
-      navigate("*");
+    console.log(token,typeof(role) ,"here iam t r ")
+    if ((!isLoading && !token )|| role !=="1") {
+      navigate("/login");
     }
-  }, [navigate, isLoading, token]);
+  }, [navigate, isLoading, token,role]);
 
   return isLoading  ? <Spinner /> : token ? <Outlet /> : <Navigate to="/login" />;
 }

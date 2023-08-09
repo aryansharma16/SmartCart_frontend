@@ -2,6 +2,7 @@ import React from "react";
 import Layout from "../components/Layout/Layout";
 import { MdPageview } from "react-icons/md";
 import { Link } from "react-router-dom";
+
 const PageNotFound = () => {
   return (
     <Layout title={"Page-Not-Found"}>
@@ -12,8 +13,9 @@ const PageNotFound = () => {
           The page you are looking for might have been removed, had its name
           changed, or is temporarily unavailable.
         </p>
-       <Link> <MdPageview /> </Link>
-        <Link className="home-link" href="/">Go back to homepage</Link>
+        <Link to="/"> {/* Specify the "to" prop with the destination URL */}
+          <MdPageview /> Go back to homepage
+        </Link>
       </div>
     </Layout>
   );
