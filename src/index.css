@@ -828,3 +828,7 @@ hr {
   box-shadow: none;
   transform: translateY(0);
 }
+
+.userName_home{
+  color:rgb(221, 89, 89);
+}

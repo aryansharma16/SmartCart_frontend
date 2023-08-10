@@ -23,7 +23,7 @@ const Dashboard = () => {
     <>
     {console.log("Hey from this")}
     <div className='dashboard_container'></div>
-      <h>Dashboard page</h>
+      <h>User Dashboard page</h>
       
       <button onClick={handleClick}> Ckick Here Route next</button>
     </>

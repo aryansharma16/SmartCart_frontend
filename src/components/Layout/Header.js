@@ -114,14 +114,14 @@ const Header = ({ auth, setAuth }) => {
                             to="/dashboard/admin"
                             className="dropdown-item"
                           >
-                            Dashboard
+                          Admin Dash....
                           </NavLink>
                         ) : (
                           <NavLink
                             to="/user/dashboard"
                             className="dropdown-item"
                           >
-                            Dashboard
+                            User Dashboard
                           </NavLink>
                         )}
                       </li>
