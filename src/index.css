@@ -448,14 +448,15 @@ hr {
   max-width: 800px;
   margin: 0 auto;
   border-radius: 8px;
-  padding: 20px;
+  padding: 0px 20px;
 
 }
 
 .policy-wrapper {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   background-color: #f7cfcc;
-  margin-top: 150px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   padding: 20px;
   border-radius: 20px;
 }

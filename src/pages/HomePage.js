@@ -6,10 +6,7 @@ const HomePage = () => {
     JSON.parse(localStorage.getItem("token")) || {}
   );
 
-  // useEffect(() => {
-  //   // Save authentication information to local storage whenever it changes
-  //   localStorage.setItem("token", JSON.stringify(auth));
-  // }, [auth]);
+
 
   return (
     <Layout title={"Home | SmartCart"}>

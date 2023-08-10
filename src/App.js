@@ -25,15 +25,20 @@ function App() {
     token: localStorage.getItem("token"),
   });
 
+
+
   useEffect(() => {
-    const tokenExpiration = localStorage.getItem("tokenExpiration");
-    if (tokenExpiration && new Date().getTime() > tokenExpiration) {
-      // Token has expired, so log out the user
-      setAuth({});
-      localStorage.removeItem("token");
-      localStorage.removeItem("tokenExpiration");
+    const role = localStorage.getItem("role");
+    if (role) {
+      setTimeout(() => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("name");
+        localStorage.removeItem("role");
+        window.location.reload(); // Reload the app
+      }, 3600000); // Clear localStorage after 5 seconds
+      
     }
-  }, []);
+  });
   return (
     <>
       <Header auth={auth} setAuth={setAuth} />
