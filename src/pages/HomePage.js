@@ -14,8 +14,12 @@ const HomePage = () => {
   return (
     <Layout title={"Home | SmartCart"}>
       <div className="home-page">
-        <h1 className="home-page__title">Welcome to SmartCart           <span className="userName_home">Mr'{localStorage.getItem("name")}</span>
-</h1> 
+        <h1 className="home-page__title">
+          Welcome to SmartCart{" "}
+          <span className="userName_home">
+            Mr'{localStorage.getItem("name")}
+          </span>
+        </h1>
 
         <p className="home-page__description">
           Start shopping smarter with SmartCart, the ultimate online shopping
