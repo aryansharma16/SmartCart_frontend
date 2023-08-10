@@ -16,8 +16,8 @@ const HomePage = () => {
       <div className="home-page">
         <h1 className="home-page__title">
           Welcome to SmartCart{" "}
-          <span className="userName_home">
-            Mr'{localStorage.getItem("name")}
+          <span className="userName_home"> Dear
+  {localStorage.getItem("name")}
           </span>
         </h1>
 
