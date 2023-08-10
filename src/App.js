@@ -35,7 +35,7 @@ function App() {
         localStorage.removeItem("name");
         localStorage.removeItem("role");
         window.location.reload(); // Reload the app
-      }, 3600000); // Clear localStorage after 5 seconds
+      }, 6000); // Clear localStorage after 5 seconds
       
     }
   });
