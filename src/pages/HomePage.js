@@ -24,7 +24,7 @@ const HomePage = () => {
         <p className="home-page__description">
           Start shopping smarter with SmartCart, the ultimate online shopping
           platform.
-          {localStorage.getItem("name")}
+         
         </p>
       </div>
     </Layout>
