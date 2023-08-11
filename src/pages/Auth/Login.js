@@ -36,7 +36,10 @@ const Login = ({ auth, setAuth }) => {
         localStorage.setItem("token", JSON.stringify(res.data.token));
         localStorage.setItem("name", res.data.user.name);
         localStorage.setItem("role", res.data.user.role);
+        localStorage.setItem("email", res.data.user.email);
+        localStorage.setItem("phone", res.data.user.phone);
         console.log(res.data.user.role);
+        console.log(res.data.user);
         if (res.data.user.role === 1) {
         console.log(res.data.user.role,"hii shf");
 

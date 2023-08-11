@@ -1,21 +1,21 @@
-/* src/scroll.css */
-
 /* Customize scrollbar appearance */
 ::-webkit-scrollbar {
-    width: 8px;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: #4f4f4f;
-    border-radius: 9px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #7f99af;
-  }
-  
-  /* Smooth scroll behavior */
-  body {
-    scroll-behavior: smooth;
-  }
-  
+  width: 8px;
+  height: 8px; /* Add height to ensure vertical scrollbar is visible */
+}
+
+/* Rest of your existing styles */
+::-webkit-scrollbar-thumb {
+  background-color: #4f4f4f;
+  border-radius: 9px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #7f99af;
+}
+
+/* Smooth scroll behavior */
+body {
+  scroll-behavior: smooth;
+  overflow-x: hidden; /* Hide horizontal overflow */
+}

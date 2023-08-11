@@ -1,35 +1,30 @@
-import React from 'react'
-import Layout from '../../components/Layout/Layout'
-import Header from '../../components/Layout/Header'
-import { useNavigate } from 'react-router-dom'
-
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import UserMenu from "../../components/Layout/UserMenu";
+import Layout from "../../components/Layout/Layout";
+import "../user/user.css"
 const Dashboard = () => {
-  console.log("kkmdmckmd")
-  let navigate = useNavigate()
-  const handleClick = async (e) => {
-      e.preventDefault();
-     try {
-      navigate('/user/samp')
-     } catch (error) {
-      console.log(error)
-     }
-    };
+  const user = localStorage.getItem("name");
+  const phone = localStorage.getItem("phone");
+  const email = localStorage.getItem("email");
+
   return (
-  <>
-  {/* <Header /> */}
+   <Layout>
+     <div className="container-fluid m-3 p-3">
+          <div className="row">
+            <div className="col-md-3">
+              <UserMenu />
+            </div>
+            <div className="col-md-9 user_container12 ">
+              User Details
+              <div className="customCard">Admin Name : {user}</div>
+              <div className="customCard ">Admin Email : {email}</div>
+              <div className="customCard ">Admin Contact : {phone}</div>
+            </div>
+          </div>
+        </div>
+   </Layout>
+  );
+};
 
-    <Layout title={'Dashboard - Ecom'}>
-
-    <>
-    {console.log("Hey from this")}
-    <div className='dashboard_container'></div>
-      <h>User Dashboard page</h>
-      
-      <button onClick={handleClick}> Ckick Here Route next</button>
-    </>
-    </Layout>
-  </>
-  )
-}
-
-export default Dashboard
+export default Dashboard;

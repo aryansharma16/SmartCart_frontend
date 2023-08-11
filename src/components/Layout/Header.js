@@ -19,6 +19,8 @@ const Header = ({ auth, setAuth }) => {
     localStorage.removeItem("token");
     localStorage.removeItem("name");
     localStorage.removeItem("role");
+    localStorage.removeItem("email");
+    localStorage.removeItem("phone");
     navigate("/login");
   };
   const role = localStorage.getItem("role");

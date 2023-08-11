@@ -1,0 +1,91 @@
+/* Styles for the custom admin menu container */
+
+.row {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+/* Style for the heading */
+.admin_panel_heading {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #98c3f8;
+    transition: color 0.3s;
+
+
+}
+
+.admin_panel_heading:hover {
+    color: #007bff;
+}
+
+/* Styles for the custom list group */
+.custom-list-group {
+    border: 1px solid #ddd;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #000000;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin_panel_content22 {
+    /* border: 1px solid #ddd; */
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background-color: #0D1282;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 240px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease; /* Adding a transition effect for transform */
+}
+
+.admin_panel_content22:hover {
+    transform: translateY(-10px); /* Moving the element 10px upwards on hover */
+   cursor: pointer;
+}
+
+.customCard {
+    font-size: 15px;
+    color: #D71313;
+}
+
+/* Styles for the custom list group items */
+.custom-list-group-item {
+    padding: 7px;
+    border: none;
+    border-bottom: 1px solid rgb(42, 42, 42);
+
+
+}
+
+/* Styles for the active custom list group item */
+.custom-list-group-item.active {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+/* Styles for the custom navigation links */
+.custom-nav-link {
+    color: #979595;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 16px;
+    background-color: #000000;
+}
+
+/* Hover effect for the custom navigation links */
+.custom-nav-link:hover {
+    color: #000000;
+}
+
+.controloverflow{
+    
+    overflow: hidden;
+}

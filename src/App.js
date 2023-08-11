@@ -20,12 +20,15 @@ import AdminRoute from "./components/Layout/Routes/AdminRoute";
 import { useEffect, useState } from "react";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import SampleUserComp from "./pages/user/SampleUserComp";
+import CreateCategory from "./pages/Admin/CreateCategory";
+import CreateProduct from "./pages/Admin/CreateProduct";
+import Profile from "./pages/user/Profile";
+import Order from "./pages/user/Order"
+import Users from "./pages/Admin/Users";
 function App() {
   const [auth, setAuth] = useState({
     token: localStorage.getItem("token"),
   });
-
-
 
   useEffect(() => {
     const role = localStorage.getItem("role");
@@ -34,9 +37,10 @@ function App() {
         localStorage.removeItem("token");
         localStorage.removeItem("name");
         localStorage.removeItem("role");
+        localStorage.removeItem("email");
+        localStorage.removeItem("phone");
         window.location.reload(); // Reload the app
-      }, 1200000); // Clear localStorage after 5 seconds
-      
+      }, 12200000); // Clear localStorage after 5 seconds
     }
   });
   return (
@@ -47,11 +51,15 @@ function App() {
 
         <Route exact path="/user" element={<PrivateRoute />}>
           <Route path="dashboard" element={<Dashboard />} />
-          <Route path="samp" element={<SampleUserComp />} />
+          <Route path="dashboard/profile" element={<Profile />} />
+          <Route path="dashboard/orders" element={<Order />} />
         </Route>
 
         <Route path="/dashboard/" element={<AdminRoute />}>
           <Route path="admin" element={<AdminDashboard />} />
+          <Route path="admin/create-category" element={<CreateCategory />} />
+          <Route path="admin/create-product" element={<CreateProduct />} />
+          <Route path="admin/users" element={<Users />} />
         </Route>
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
