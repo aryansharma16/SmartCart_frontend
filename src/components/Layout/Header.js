@@ -5,23 +5,36 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { faUserSlash } from "@fortawesome/free-solid-svg-icons";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { Button, message, Popconfirm } from "antd";
 
 const Header = ({ auth, setAuth }) => {
   const navigate = useNavigate();
-  
-  const handleLogout = (e) => {
-    e.preventDefault();
+  const token = localStorage.getItem("token");
+  const confirm = (e) => {
+    console.log(e);
+    message.success("Click on Yes");
+  };
+  const cancel = (e) => {
+    console.log(e);
+    message.error("Click on No");
+    navigate("/");
+  };
+  const handleLogout = () => {
+    // No need to preventDefault() here
 
     setAuth({
       ...auth,
-      token: "", // Corrected: Removed square brackets around "token"
+      token: "",
     });
+
     localStorage.removeItem("token");
     localStorage.removeItem("name");
     localStorage.removeItem("role");
     localStorage.removeItem("email");
     localStorage.removeItem("phone");
-    navigate("/login");
+    if (token) {
+      navigate("/login");
+    }
   };
   const role = localStorage.getItem("role");
 
@@ -67,15 +80,6 @@ const Header = ({ auth, setAuth }) => {
                   CustomStyle
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink to="/cart" className="nav-link">
-                  <FontAwesomeIcon
-                    icon={faCartShopping}
-                    style={{ fontSize: "16px", color: "#4E4FEB" }}
-                  />
-                  &#160;(0)
-                </NavLink>
-              </li>
 
               {/* Render different links based on whether the user is logged in */}
               {!auth?.token ? (
@@ -93,7 +97,7 @@ const Header = ({ auth, setAuth }) => {
                 </>
               ) : (
                 <>
-                  <div className="dropdown">
+                  <div className="dropdown custom_dropdown_new11">
                     <button
                       className="btnMore btn-secondary dropdown-toggle button-28"
                       type="button"
@@ -104,7 +108,7 @@ const Header = ({ auth, setAuth }) => {
                         <FontAwesomeIcon icon={faUser} />
                         &nbsp;
                       </span>
-                      {localStorage.getItem("name")}
+                    <span className="display_name_user">  {localStorage.getItem("name")}</span>
                     </button>
                     <ul
                       className="dropdown-menu"
@@ -116,7 +120,7 @@ const Header = ({ auth, setAuth }) => {
                             to="/dashboard/admin"
                             className="dropdown-item"
                           >
-                          Admin Dash....
+                            Admin Dash....
                           </NavLink>
                         ) : (
                           <NavLink
@@ -145,28 +149,47 @@ const Header = ({ auth, setAuth }) => {
                       </li>
                       <li id="logout_style">
                         {/* Logout button */}
-                        <NavLink
-                          to="/login"
-                          className="nav-link"
-                          onClick={handleLogout}
+
+                        <Popconfirm
+                        className="open_pop_yes_no"
+                          title="Logout Now"
+                          description="Are you sure to Logout"
+                          onConfirm={handleLogout}
+                          onCancel={cancel}
+                          okText="Yes"
+                          cancelText="No"
                         >
-                          <button className="button-82-pushable" role="button">
-                            <span className="button-82-shadow"></span>
-                            <span className="button-82-edge"></span>
-                            <span className="button-82-front text">
-                              <FontAwesomeIcon
-                                icon={faUserSlash}
-                                style={{ fontSize: "16px", color: "purple" }}
-                              />
-                              &nbsp; Logout
-                            </span>
-                          </button>
-                        </NavLink>
+                          <NavLink to="/login" className="nav-link">
+                            <Button
+                              className="button-82-pushable"
+                              role="button"
+                            >
+                              <span className="button-82-shadow"></span>
+                              <span className="button-82-edge"></span>
+                              <span className="button-82-front text">
+                                <FontAwesomeIcon
+                                  icon={faUserSlash}
+                                  style={{ fontSize: "16px", color: "purple" }}
+                                />
+                                &nbsp; Logout
+                              </span>
+                            </Button>
+                          </NavLink>
+                        </Popconfirm>
                       </li>
                     </ul>
                   </div>
                 </>
               )}
+              <li className="nav-item">
+                <NavLink to="/cart" className="nav-link">
+                  <FontAwesomeIcon
+                    icon={faCartShopping}
+                    style={{ fontSize: "16px", color: "#4E4FEB" }}
+                  />
+                  &#160;(0)
+                </NavLink>
+              </li>
             </ul>
           </div>
         </div>

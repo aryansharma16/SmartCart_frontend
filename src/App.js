@@ -23,8 +23,10 @@ import SampleUserComp from "./pages/user/SampleUserComp";
 import CreateCategory from "./pages/Admin/CreateCategory";
 import CreateProduct from "./pages/Admin/CreateProduct";
 import Profile from "./pages/user/Profile";
-import Order from "./pages/user/Order"
+import Order from "./pages/user/Order";
 import Users from "./pages/Admin/Users";
+import Products from "./pages/Admin/Products";
+import UpdateProduct from "./pages/Admin/UpdateProduct";
 function App() {
   const [auth, setAuth] = useState({
     token: localStorage.getItem("token"),
@@ -59,6 +61,8 @@ function App() {
           <Route path="admin" element={<AdminDashboard />} />
           <Route path="admin/create-category" element={<CreateCategory />} />
           <Route path="admin/create-product" element={<CreateProduct />} />
+          <Route path="admin/products" element={<Products />} />
+          <Route path="admin/products/:slug" element={<UpdateProduct />} />
           <Route path="admin/users" element={<Users />} />
         </Route>
         <Route path="/contact" element={<Contact />} />

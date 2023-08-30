@@ -51,9 +51,17 @@ main {
   position: fixed;
   width: 100%;
   background: #000 !important;
+  z-index: 9999;
 }
 
 .navbar-brand {
+  color: rgb(255, 255, 255);
+  font-size: 24px;
+  font-weight: 900;
+
+}
+
+.navbar-brand:hover {
   color: rgb(255, 255, 255);
   font-size: 24px;
   font-weight: 900;
@@ -82,8 +90,6 @@ main {
   /* New CSS for the cross icon */
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 4L26 26M4 26l22-22'/%3E%3C/svg%3E");
 }
-
-
 
 /*  hard code for navbar for its coor and appearance
  */
@@ -830,6 +836,139 @@ hr {
   transform: translateY(0);
 }
 
-.userName_home{
-  color:rgb(221, 89, 89);
+.userName_home {
+  color: rgb(221, 89, 89);
+}
+
+/* CSS */
+.button-81 {
+  background-color: #0077ff;
+  border: 0 solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  color: #0d172a;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 4px 4px 4px 4px;
+  text-align: center;
+  text-decoration: none #0d172a solid;
+  text-decoration-thickness: auto;
+  transition: all .1s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-81:hover {
+  background-color: #26303e;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .button-81 {
+    font-size: 1.125rem;
+    padding: 1rem 2rem;
+  }
+}
+
+.button-87 {
+  background-color: #1e293b;
+  margin-left: 10px;
+  border: 0 solid #e2e8f0;
+  border-radius: 1.5rem;
+  box-sizing: border-box;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Basier circle", -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  padding: 4px 4px 4px 4px;
+  text-align: center;
+  text-decoration: none #0d172a solid;
+  text-decoration-thickness: auto;
+  transition: all .1s cubic-bezier(.4, 0, .2, 1);
+  box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-87:hover {
+  background-color: #2b7ad5;
+  color: #000000;
+}
+
+@media (min-width: 768px) {
+  .button-87 {
+    font-size: 1.125rem;
+    padding: 1rem 2rem;
+  }
+}
+
+
+.fix_the_img_home {
+  height: 230px;
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
+
+  cursor: pointer;
+
+}
+
+.card-text {
+  overflow: hidden;
+  display: -webkit-box;
+  cursor: pointer;
+  -webkit-line-clamp: 2;
+  /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  color: rgb(159, 157, 157);
+}
+
+.expanded {
+  -webkit-line-clamp: initial;
+  /* Display all lines when expanded */
+  overflow: initial;
+  /* Display all content when expanded */
+}
+
+.margin_products_card {
+  /* Add space around the card */
+  margin: 10px;
+}
+
+/* Apply hover animation, shadow, and lift effect */
+.hover-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
+.hover-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+.white-checkbox-label {
+  color: white;
+}
+
+
+.filter_home_page {
+  display: flex;
+  flex-direction: column;
+}
+
+.Flex_the_radio_home {
+  display: flex;
+  flex-direction: column;
+
 }

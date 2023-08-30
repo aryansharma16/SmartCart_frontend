@@ -1,17 +1,19 @@
 // all imports
 import React from "react";
+import { Button, message, Popconfirm } from "antd";
 import Layout from "../../components/Layout/Layout";
 import AdminMenu from "../../components/Layout/AdminMenu";
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { Modal, Select } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 const { Option } = Select;
 
-const CreateProduct = () => {
+const UpdateProduct = () => {
   // use states
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const params = useParams();
   const [categories, setCatgeries] = useState([]);
   const [category, setCategory] = useState("");
   const [previewVisible, setPreviewVisible] = useState(false); // State to track the visibility of the preview
@@ -23,7 +25,38 @@ const CreateProduct = () => {
   const [price, setPrice] = useState("");
   const [quantity, setQuantity] = useState("");
   const [shipping, setShipping] = useState("");
-  console.log(category,'here is selected category')
+  const [id, setId] = useState("");
+  console.log(category, "here is selected category");
+
+  // get single product according to slug
+  const cancel = (e) => {
+    console.log(e);
+    message.error("Click on No");
+  };
+  const confirm = (e) => {
+    console.log(e);
+    message.success("Click on Yes");
+  };
+  const getSingleProduct = async () => {
+    try {
+      const { data } = await axios.get(
+        `/api/v/products/getProduct/${params.slug}`
+      );
+      setName(data.product.name);
+      setId(data.product._id);
+      setDescription(data.product.description);
+      setPrice(data.product.price);
+      setQuantity(data.product.quantity);
+      setCategory(data.product.category._id);
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong while geting single product");
+    }
+  };
+  useEffect(() => {
+    getSingleProduct();
+    //eslint-disable-next-line
+  }, []);
   // get all categeries
   const getAllcategory = async () => {
     try {
@@ -41,8 +74,8 @@ const CreateProduct = () => {
   };
 
   // create product function
-  
-  const handleCreate = async (e) => {
+
+  const handleUpdate = async (e) => {
     e.preventDefault();
     try {
       const config = {
@@ -51,45 +84,66 @@ const CreateProduct = () => {
           "X-User-Role": role,
         },
       };
-  
+
       const productData = new FormData();
       productData.append("name", name);
       productData.append("description", description);
       productData.append("price", price);
       productData.append("quantity", quantity);
-      productData.append("photo", photo); // Make sure `photo` is a valid File object
+      photo && productData.append("photo", photo); // Make sure `photo` is a valid File object
       productData.append("category", category);
       productData.append("shipping", shipping);
-      const response = await axios.post("/api/v/products/create-product", productData, config);
-  
+      const response = await axios.put(
+        `/api/v/products/update-product/${id}`,
+        productData,
+        config
+      );
+
       const data = response.data; // Use `response.data` instead of destructuring
-  
+
       if (data?.success) {
-        toast.success(`${name} is created Successfully`);
+        toast.success(`${name} is Updated Successfully`);
         // Clear input fields
-        setName("");
-        setDescription("");
-        setPrice("");
-        setQuantity("");
-        setPhoto("");
-        setCategory("");
-        setShipping("");
-  
+        // setName("");
+        // setDescription("");
+        // setPrice("");
+        // setQuantity("");
+        // setPhoto("");
+        // setCategory("");
+        // setShipping("");
+
         // Navigate to the desired location
-        console.log('done =====')
+        console.log("done =====");
         navigate("/dashboard/admin/products");
       } else {
         toast.error(data?.message);
       }
     } catch (error) {
       console.log(error);
-      toast.error("Something went wrong while handleCreate");
+      toast.error("Something went wrong while handle update");
     }
   };
-  
+
   useEffect(() => {
     getAllcategory();
   }, []);
+
+  //   delete product
+  //delete a product
+  const handleDelete = async () => {
+    try {
+    //   let answer = window.prompt("Are You Sure want to delete this product ? ");
+    //   if (!answer) return;
+      const { data } = await axios.delete(
+        `/api/v/products/delete-product/${id}`
+      );
+      toast.success("Product DEleted Succfully");
+      navigate("/dashboard/admin/products");
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong in delete handle");
+    }
+  };
   return (
     <Layout title={"Dashboard - Create Products"}>
       <div className="container-fluid m-3 p-3">
@@ -98,7 +152,7 @@ const CreateProduct = () => {
             <AdminMenu />
           </div>
           <div className="col-md-9 controloverflow">
-            <h1>Create Product</h1>
+            <h1>Update Product</h1>
             <div className="m-1">
               <Select
                 bordered={false}
@@ -109,6 +163,7 @@ const CreateProduct = () => {
                 onChange={(value) => {
                   setCategory(value);
                 }}
+                value={category}
               >
                 {categories?.map((c) => (
                   <Option
@@ -145,23 +200,43 @@ const CreateProduct = () => {
               </div>
               {previewVisible && (
                 <div className="overlay">
-                  <div className="preview_popup">
-                    <img
-                      src={URL.createObjectURL(photo)}
-                      alt={`${photo.name} photo`}
-                      className="im img-responsive custom_image_preview"
-                    />
-                  </div>
-                  <button className="cross-button" onClick={togglePreview}>
-                    <span className="cross-line cross-line-1"></span>
-                    <span className="cross-line cross-line-2"></span>
-                  </button>
+                  {photo ? (
+                    <div>
+                      <div className="preview_popup">
+                        <img
+                          src={URL.createObjectURL(photo)}
+                          alt={`${photo.name} photo`}
+                          className="im img-responsive custom_image_preview"
+                        />
+                      </div>
+                      <button className="cross-button" onClick={togglePreview}>
+                        <span className="cross-line cross-line-1"></span>
+                        <span className="cross-line cross-line-2"></span>
+                      </button>
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="preview_popup">
+                        <img
+                          src={`/api/v/products/getProduct-photo/${id}`}
+                          alt={`${photo.name} photo`}
+                          className="im img-responsive custom_image_preview"
+                        />
+                      </div>
+                      <button className="cross-button" onClick={togglePreview}>
+                        <span className="cross-line cross-line-1"></span>
+                        <span className="cross-line cross-line-2"></span>
+                      </button>
+                    </div>
+                  )}
                 </div>
               )}
+
               <div className="">
                 <input
                   type="text"
                   placeholder="Write a name"
+                  value={name}
                   className="form-control cutomsFor_product_form"
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -169,6 +244,7 @@ const CreateProduct = () => {
               <div className="">
                 <textarea
                   // type="text"
+                  value={description}
                   placeholder="Write a Description"
                   className="form-control cutomsFor_product_form"
                   onChange={(e) => setDescription(e.target.value)}
@@ -178,6 +254,7 @@ const CreateProduct = () => {
                 <input
                   type="number"
                   placeholder="Write a Price "
+                  value={price}
                   className="form-control cutomsFor_product_form"
                   onChange={(e) => setPrice(e.target.value)}
                 />
@@ -186,6 +263,7 @@ const CreateProduct = () => {
                 <input
                   type="number"
                   placeholder="Write a Quantity"
+                  value={quantity}
                   className="form-control cutomsFor_product_form"
                   onChange={(e) => setQuantity(e.target.value)}
                 />
@@ -200,14 +278,28 @@ const CreateProduct = () => {
                   onChange={(value) => {
                     setShipping(value);
                   }}
+                  value={shipping ? "yes" : "No"}
                 >
                   <Option value="0">No</Option>
                   <Option value="1">Yes</Option>
                 </Select>
               </div>
-              <button className="mb-3 button-86 " onClick={handleCreate}>
-                Create Product
-              </button>
+              <div className="design_product_button">
+                <button className="mb-3 button-86 " onClick={handleUpdate}>
+                  Update Product
+                </button>
+
+                <Popconfirm
+                  title="Delete the Category"
+                  description="Are you sure to delete this Category Permanently !"
+                  onConfirm={handleDelete} // Corrected
+                  onCancel={cancel}
+                  okText="Yes"
+                  cancelText="No"
+                >
+                  <button className="mb-3 button-86 ">Delete Product</button>
+                </Popconfirm>
+              </div>
             </div>
           </div>
         </div>
@@ -216,4 +308,4 @@ const CreateProduct = () => {
   );
 };
 
-export default CreateProduct;
+export default UpdateProduct;

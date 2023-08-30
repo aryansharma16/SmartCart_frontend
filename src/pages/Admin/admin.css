@@ -95,13 +95,15 @@
 /* admin create category  */
 
 /* table css */
-.custom_table_category{
+.custom_table_category {
     max-width: 950px;
 }
-.manage_category_heading{
-    color:#007bff;
+
+.manage_category_heading {
+    color: #007bff;
     /* margin-bottom: 35px; */
 }
+
 /* CSS */
 .button-32 {
     background-color: #fff000;
@@ -161,7 +163,8 @@
 .button-33:not(:disabled):focus {
     outline: 0;
     background: #f40303;
-    color: #ffffff;transform: translateY(-2px);
+    color: #ffffff;
+    transform: translateY(-2px);
     box-shadow: 0 0 0 2px rgba(0, 0, 0, .2), 0 3px 8px 0 rgba(0, 0, 0, .15);
 }
 
@@ -177,68 +180,346 @@
 
 /* CSS */
 .button-86 {
-  all: unset;
-  width: 100px;
-  height: 30px;
-  font-size: 16px;
-  background: transparent;
-  border: none;
-  position: relative;
-  color: #eeeeee;
-  cursor: pointer;
-  z-index: 1;
-  padding: 5px 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  white-space: nowrap;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
+    all: unset;
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    position: relative;
+    color: #eeeeee;
+    cursor: pointer;
+    z-index: 1;
+    padding: 5px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 }
 
 .button-86::after,
 .button-86::before {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  z-index: -99999;
-  transition: all .4s;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -99999;
+    transition: all .4s;
 }
 
 .button-86::before {
-  transform: translate(0%, 0%);
-  width: 100%;
-  height: 100%;
-  background: #28282d;
-  border-radius: 10px;
+    transform: translate(0%, 0%);
+    width: 100%;
+    height: 100%;
+    background: #28282d;
+    border-radius: 10px;
 }
 
 .button-86::after {
-  transform: translate(10px, 10px);
-  width: 35px;
-  height: 35px;
-  background: #ffffff15;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
-  border-radius: 50px;
+    transform: translate(10px, 10px);
+    width: 35px;
+    height: 35px;
+    background: #ffffff15;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 50px;
 }
 
 .button-86:hover::before {
-  transform: translate(5%, 20%);
-  width: 110%;
-  height: 110%;
+    transform: translate(5%, 20%);
+    width: 110%;
+    height: 110%;
 }
 
 .button-86:hover::after {
-  border-radius: 10px;
-  transform: translate(0, 0);
-  width: 100%;
-  height: 100%;
+    border-radius: 10px;
+    transform: translate(0, 0);
+    width: 100%;
+    height: 100%;
 }
 
 .button-86:active::after {
-  transition: 0s;
-  transform: translate(0, 5%);
+    transition: 0s;
+    transform: translate(0, 5%);
+}
+
+.total_categories_count {
+    color: #899ca1;
+    font-size: 25px;
+}
+
+.custom_category_select {
+    width: 500px;
+    /* background: none; */
+    color: #eff1f3;
+    /* background-color: #000000; */
+}
+
+.photo_select_adjust {
+    width: 400px;
+}
+
+.cross-button {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    position: relative;
+    animation: glowing 2s infinite;
+}
+
+.cross-line {
+    position: absolute;
+    width: 15px;
+    height: 2px;
+    background-color: red;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.cross-line-1 {
+    transform: rotate(45deg);
+}
+
+.cross-line-2 {
+    transform: rotate(-45deg);
+}
+
+@keyframes glowing {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px red;
+    }
+
+    50% {
+        box-shadow: 0 0 20px red, 0 0 40px red;
+    }
+}
+
+.button-54 {
+    font-family: "Open Sans", sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #00b3f4;
+    /* Change to white */
+    cursor: pointer;
+    border: 3px solid;
+    padding: 0.25em 0.5em;
+    box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.button-54:active {
+    box-shadow: 0px 0px 0px 0px;
+    top: 5px;
+    left: 5px;
+}
+
+@media (min-width: 768px) {
+    .button-54 {
+        padding: 0.25em 0.75em;
+    }
+}
+
+.constom_image_preview {
+    width: 500px;
+    margin-top: 15px;
+    border-radius: 25px;
+    border: 1px solid #00b3f4;
+}
+
+
+.adjust_view_button {
+    margin: 20px;
+    margin-top: 9px;
+}
+
+/* CSS */
+.button-48 {
+    appearance: none;
+    background-color: #FFFFFF;
+    border-width: 0;
+    box-sizing: border-box;
+    color: #000000;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Clarkson, Helvetica, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1em;
+    margin: 0;
+    opacity: 1;
+    outline: 0;
+    padding: 7px 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-rendering: geometricprecision;
+    /* text-transform: uppercase; */
+    transition: opacity 300ms cubic-bezier(.694, 0, 0.335, 1), background-color 100ms cubic-bezier(.694, 0, 0.335, 1), color 100ms cubic-bezier(.694, 0, 0.335, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+}
+
+.button-48:before {
+    animation: opacityFallbackOut .5s step-end forwards;
+    backface-visibility: hidden;
+    background-color: #40bff1;
+    clip-path: polygon(-1% 0, 0 0, -25% 100%, -1% 100%);
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transform: translateZ(0);
+    transition: clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1), -webkit-clip-path .5s cubic-bezier(.165, 0.84, 0.44, 1);
+    width: 100%;
+}
+
+.button-48:hover:before {
+    animation: opacityFallbackIn 0s step-start forwards;
+    clip-path: polygon(0 0, 101% 0, 101% 101%, 0 101%);
+}
+
+.button-48:after {
+    background-color: #FFFFFF;
+}
+
+.button-48 span {
+    z-index: 1;
+    position: relative;
+}
+
+/* Add these styles to your existing CSS or use a separate stylesheet */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.preview_popup {
+    position: relative;
+    /* background-color: #fff; */
+    padding: 10px;
+    /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); */
+}
+
+.preview_popup img {
+    border-radius: 25px;
+    width: 650px;
+
+}
+
+.close_button {
+    position: absolute;
+    top: 0px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.flex_the_image_preview {
+    display: flex;
+}
+
+.cutomsFor_product_form {
+    width: 500px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.cutomsFor_product_form::placeholder {
+    color: #0d6efd;
+}
+
+.flex_card_container {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow cards to wrap to the next row */
+    justify-content: space-between;
+    /* Distribute cards evenly within the container */
+    padding: 15px;
+    min-width: 988px;
+}
+
+.margin_products_card {
+    margin: 15px;
+    flex: 0 0 calc(33.33% - 30px);
+    /* Set each card to take up roughly one-third of the container width */
+    box-sizing: border-box;
+    /* Ensure padding and margin are included in the card width */
+}
+
+
+.product-link {
+    text-decoration: none;
+}
+
+.design_product_button {
+    display: flex;
+}
+
+.design_product_button button {
+
+    margin: 15px;
+}
+
+.design_product_button button:last-child {
+
+    color: #da5c5c;
+    background-color: red;
+    box-shadow: rgba(237, 0, 0, 0.893) 0px -50px 36px -28px inset;
+    border-radius: 8px;
+}
+
+.design_product_button button:last-child:hover {
+
+    color: #ff0000;
+    font-size: 16px;
+    transition: 1s;
+    font-weight: 700;
+}
+
+
+.design_product_button button:first-child {
+
+    color: #2975c6;
+    background-color: #007bff;
+    box-shadow: rgba(0, 166, 237, 0.893) 0px -50px 36px -28px inset;
+    border-radius: 8px;
+}
+
+.design_product_button button:first-child:hover {
+
+    color: #007bff;
+    font-size: 16px;
+    transition: 1s;
+    font-weight: 700;
 }

@@ -1,6 +1,8 @@
 import React from "react";
+import { useState, useEffect } from "react";
+import {} from 'antd'
+const CategoryForm = ({ hanldeSubmit, value, setValue }) => {
 
-const CategoryForm = ({ hanldeSubmit, value,  setValue}) => {
   return (
     <>
       <form onSubmit={hanldeSubmit}>
@@ -14,9 +16,7 @@ const CategoryForm = ({ hanldeSubmit, value,  setValue}) => {
           />
         </div>
 
-        <button className=" button-86 ">
-          Submit
-        </button>
+        <button className=" button-86 ">Submit</button>
       </form>
     </>
   );
