@@ -44,7 +44,7 @@ const HomePage = () => {
       all.push(id); // to add the id of category
     } else {
       // value is false
-      all = all.filter((c) => c !== id); // to remove the id of unchecked
+      all = all?.filter((c) => c !== id); // to remove the id of unchecked
     }
     setChecked(all);
   };
@@ -88,7 +88,7 @@ const HomePage = () => {
           <h1 className="text-center">All Products</h1>
           {JSON.stringify(checked, null, 4)}
           <div className="d-flex flex-wrap">
-            {products.map((p) => (
+            {products?.map((p) => (
               <div
                 className="card bg-dark text-white margin_products_card hover-card"
                 style={{ width: "18rem" }}
