@@ -30,7 +30,7 @@ const CreateCategory = () => {
       };
 
       const { data } = await axios.post(
-        "/api/v/category/create-category",
+        `${process.env.REACT_APP_API}/api/v/category/create-category`,
         {
           name,
         },
@@ -60,7 +60,9 @@ const CreateCategory = () => {
   };
   const getAllcategory = async () => {
     try {
-      const { data } = await axios.get("/api/v/category/get-category");
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v/category/get-category`
+      );
       if (data?.success) {
         setCatgeries(data?.category);
       }
@@ -86,7 +88,7 @@ const CreateCategory = () => {
       };
 
       const { data } = await axios.put(
-        `/api/v/category/update-category/${selected._id}`,
+        `${process.env.REACT_APP_API}/api/v/category/update-category/${selected._id}`,
         {
           name: updatedName,
         },
@@ -119,7 +121,7 @@ const CreateCategory = () => {
       };
 
       const { data } = await axios.delete(
-        `/api/v/category/delete-category/${pId}`,
+        `${process.env.REACT_APP_API}/api/v/category/delete-category/${pId}`,
 
         config
       );
@@ -147,7 +149,6 @@ const CreateCategory = () => {
             <h1 className="manage_category_heading">
               Manage Category{" "}
               <span className="total_categories_count">
-
                 ({totalCategorues})
               </span>
             </h1>
@@ -183,7 +184,7 @@ const CreateCategory = () => {
                         >
                           Edit
                         </button>
-                       
+
                         <Popconfirm
                           title="Delete the Category"
                           description="Are you sure to delete this Category Permanently !"

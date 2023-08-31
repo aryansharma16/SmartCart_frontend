@@ -14,7 +14,7 @@ const HomePage = () => {
   //   get all products
   const getAllProducts = async () => {
     try {
-      const { data } = await axios.get("/api/v/products/getProduct");
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v/products/getProduct`);
       setProducts(data.products);
       console.log(products, "hii products home");
     } catch (error) {

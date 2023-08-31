@@ -27,7 +27,7 @@ const CreateProduct = () => {
   // get all categeries
   const getAllcategory = async () => {
     try {
-      const { data } = await axios.get("/api/v/category/get-category");
+      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v/category/get-category`);
       if (data.success) {
         setCatgeries(data?.category);
       }
@@ -60,7 +60,7 @@ const CreateProduct = () => {
       productData.append("photo", photo); // Make sure `photo` is a valid File object
       productData.append("category", category);
       productData.append("shipping", shipping);
-      const response = await axios.post("/api/v/products/create-product", productData, config);
+      const response = await axios.post(`${process.env.REACT_APP_API}/api/v/products/create-product`, productData, config);
   
       const data = response.data; // Use `response.data` instead of destructuring
   
