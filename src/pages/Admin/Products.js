@@ -44,7 +44,7 @@ const Products = () => {
                 >
                   <div className="card bg-dark text-white ">
                     <img
-                      src={`/api/v/products/getProduct-photo/${p._id}`}
+                      src={`${process.env.REACT_APP_API}/api/v/products/getProduct-photo/${p._id}`}
                       className="fix_the_img_home"
                       alt={p.name}
                     />
