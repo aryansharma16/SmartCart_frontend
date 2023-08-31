@@ -39,7 +39,7 @@ const Products = () => {
               {products.map((p) => (
                 <Link
                   className="product-link"
-                  to={`/dashboard/admin/products/${p.slug}`}
+                  to={`${process.env.REACT_APP_API}/dashboard/admin/products/${p.slug}`}
                   key={p._id}
                 >
                   <div className="card bg-dark text-white ">
