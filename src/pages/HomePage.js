@@ -10,24 +10,56 @@ const HomePage = () => {
   //  state to slect category
   const [checked, setChecked] = useState([]);
   const [radio, setRadio] = useState([]);
-
-  //   get all products
-  const getAllProducts = async () => {
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  // getTotal count
+  const getTotal = async () => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v/products/getProduct`);
-      setProducts(data.products);
-      console.log(products, "hii products home");
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v/products/product-count`
+      );
+      setTotal(data?.total);
     } catch (error) {
       console.log(error);
       toast.error("Something went wrong in Get All Products");
     }
   };
-  useEffect(() => {
-    getAllProducts();
-  }, []);
+  const loadMore = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v/products/product-list/${page}`
+      );
+      setLoading(false);
+
+      setProducts([...products, ...data?.products]);
+    } catch (error) {
+      console.log(error);
+      toast.error("Something went wrong in Get All Products");
+      setLoading(false);
+    }
+  };
+
+  //   get all products according to page list
+  const getAllProducts = async () => {
+    try {
+      setLoading(true);
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v1/product/product-list/${page}`
+      );
+      setLoading(false);
+      setProducts(data.products);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  };
   const getAllcategory = async () => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v/category/get-category`);
+      const { data } = await axios.get(
+        `${process.env.REACT_APP_API}/api/v/category/get-category`
+      );
       if (data?.success) {
         setcategories(data?.category);
       }
@@ -36,7 +68,20 @@ const HomePage = () => {
       toast.error("Somthing went Wrong in getting category");
     }
   };
+
+  // show products when the no filter is choosed
+
+  useEffect(() => {
+    if (!checked.length || !radio.length) getAllProducts();
+  }, [checked.length, radio.length]);
+
+  // show prpducts when some filters is choosed
+
+  useEffect(() => {
+    if (checked.length || radio.length) filterProducts();
+  }, [checked, radio]);
   // filter by category
+
   const handleFilter = (value, id) => {
     let all = [...checked];
     if (value) {
@@ -48,15 +93,32 @@ const HomePage = () => {
     }
     setChecked(all);
   };
-
+  // get filltered products
+  const filterProducts = async () => {
+    try {
+      const { data } = await axios.post(
+        `${process.env.REACT_APP_API}/api/v/products/product-filter`,
+        { checked, radio }
+      );
+      setProducts(data?.products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
+    getTotal();
     getAllcategory();
   }, []);
+
+  useEffect(() => {
+    if (page === 0) return;
+    loadMore();
+  }, [page]);
   return (
     <Layout title={"All Products | Best Offers"}>
-      <div className="row">
-        <div className="col-md-3">
-          <h4 className="text-center">Filter By Category </h4>
+      <div className="row home_container_flex">
+        <div className="col-md-3 filter_container">
+          <h4 className="text-center color_filter_head">Filter By Category </h4>
           <div className="filter_home_page">
             {categories?.map((c) => (
               <Checkbox
@@ -68,7 +130,7 @@ const HomePage = () => {
               </Checkbox>
             ))}
           </div>
-          <h4 className="text-center">Filter By Prices </h4>
+          <h4 className="text-center color_filter_head">Filter By Prices </h4>
           <div className="filter_home_page">
             <Radio.Group
               className="Flex_the_radio_home"
@@ -76,17 +138,22 @@ const HomePage = () => {
             >
               {Prices?.map((p) => (
                 <div key={p._id}>
-                  <Radio value={p.array} className="white-checkbox-label">{p.name}</Radio>
+                  <Radio value={p.array} className="white-checkbox-label">
+                    {p.name}
+                  </Radio>
                 </div>
               ))}
             </Radio.Group>
           </div>
-          {JSON.stringify(radio, null, 4)}
+          <div className="filter_home_page">
+            <button class="button-73" onClick={() => window.location.reload()}>
+              RESET FILTER
+            </button>
+          </div>
         </div>
 
-        <div className="col-md-9">
-          <h1 className="text-center">All Products</h1>
-          {JSON.stringify(checked, null, 4)}
+        <div className="col-md-9  products_home_container">
+          <h1 className="text-center">All Products {total}</h1>
           <div className="d-flex flex-wrap">
             {products?.map((p) => (
               <div
@@ -99,8 +166,11 @@ const HomePage = () => {
                   alt={p.name}
                 />
                 <div className="card-body">
-                  <h5 className="card-title">{p.name}</h5>
+                  <h5 className="card-title">{p.name.substring(0, 65)}.</h5>
                   <p className="card-text">{p.description}</p>
+                  <p className="card-text-price">
+                    <span>₹</span> {p.price}
+                  </p>
                   <div className="button-group-products22">
                     <button className="button-81" role="button">
                       Details
@@ -112,6 +182,19 @@ const HomePage = () => {
                 </div>
               </div>
             ))}
+          </div>
+          <div className="m-2 p-3">
+            {products && products.length < total && (
+              <button
+                className="btn btn-warning"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPage(page + 1);
+                }}
+              >
+                {loading ? "Loading ..." : "Loadmore"}
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -111,6 +111,7 @@ main {
   background: #000;
   border-top: 1px solid rgb(46, 46, 46);
   position: static;
+  z-index: 99999991000;
 }
 
 .Footer a {
@@ -958,17 +959,86 @@ hr {
 
 
 .white-checkbox-label {
-  color: white;
+  color: rgb(186, 183, 183);
+}
+.white-checkbox-label:hover {
+  color: rgb(255, 255, 255);
 }
 
 
 .filter_home_page {
   display: flex;
   flex-direction: column;
+  margin-left: 8%;
 }
 
 .Flex_the_radio_home {
   display: flex;
   flex-direction: column;
 
+}
+
+.card-text-price {
+  color: red;
+}
+
+
+
+
+
+/* CSS */
+.button-73 {
+  appearance: none;
+  background-color: #FFFFFF;
+  border-radius: 15px;
+  border-style: none;
+  box-shadow: #ADCFFF 0 -12px 6px inset;
+  box-sizing: border-box;
+  color: #000000;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system, sans-serif;
+
+  font-weight: 700;
+  margin-left: 10%;
+  outline: none;
+  padding: 5px 5px;
+  quotes: auto;
+  text-align: center;
+  margin-top: 20px;
+  text-decoration: none;
+  transition: all .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 250px;
+}
+
+.button-73:hover {
+  background-color: #FFC229;
+  box-shadow: #FF6314 0 -6px 8px inset;
+  transform: scale(1.125);
+}
+
+.button-73:active {
+  transform: scale(1.025);
+}
+
+.color_filter_head{
+  color: white;
+}
+
+.filter_container{
+  position: fixed;
+  z-index: 999;
+  border-right:2px solid rgb(59, 59, 59);
+  height: 70%;
+}
+
+.home_container_flex{
+  display: flex;
+}
+
+.products_home_container{
+  margin-left: 24%;
 }
